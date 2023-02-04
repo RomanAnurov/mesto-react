@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import PopupImage from "./PopupImage";
+import ImagePopup from "./ImagePopup";
 import PopupWithForm from "./PopupWithForm";
 import api from "../utils/api";
 
@@ -181,7 +181,7 @@ function App() {
           <span className="avatar-error popup__input-error"></span>
         </>
       </PopupWithForm>
-      <PopupImage card={selectedCard} onClose={closeAllPopups} />
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
     </div>
   );
 }
