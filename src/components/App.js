@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -7,18 +8,16 @@ import PopupWithForm from "./PopupWithForm";
 import api from "../utils/api";
 
 function App() {
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
-    React.useState(false);
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
-    React.useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [userData, setUserData] = React.useState({
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [userData, setUserData] = useState({
     userName: "",
     userDescription: "",
     userAvatar: "",
   });
-  const [cards, setCards] = React.useState([]);
-  const [selectedCard, setSelectedCard] = React.useState(null);
+  const [cards, setCards] = useState([]);
+  const [selectedCard, setSelectedCard] = useState(null);
   function handleCardClick(data) {
     setSelectedCard(data);
   }
@@ -42,7 +41,7 @@ function App() {
     setSelectedCard(null);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     api
       .getInfo()
       .then((data) => {
@@ -56,9 +55,6 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
-  React.useEffect(() => {
     api
       .getInitialCards()
       .then((data) => {
@@ -98,8 +94,8 @@ function App() {
             className="popup__input popup__input_type_user-name"
             type="text"
             name="name"
-            minlength="2"
-            maxlength="40"
+            minLength="2"
+            maxLength="40"
             required
           />
           <span className="user-name-error popup__input-error"></span>
@@ -108,8 +104,8 @@ function App() {
             className="popup__input popup__input_type_user-about"
             type="text"
             name="about"
-            minlength="2"
-            maxlength="200"
+            minLength="2"
+            maxLength="200"
             required
           />
           <span className="about-error popup__input-error">
@@ -134,8 +130,8 @@ function App() {
             type="text"
             name="name"
             placeholder="Название"
-            minlength="2"
-            maxlength="30"
+            minLength="2"
+            maxLength="30"
             required
           />
           <span className="card-name-error popup__input-error"></span>
