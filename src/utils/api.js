@@ -12,7 +12,7 @@ class Api {
     return Promise.reject(`Что-то пошло не так: ${res.status}`);
   }
 
-  getInfo() {
+  getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: this._headers,
@@ -47,7 +47,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
-        link: data.url,
+        link: data.link,
       }),
     }).then((res) => {
       return this._getResponseData(res);
@@ -61,22 +61,16 @@ class Api {
       return this._getResponseData(res);
     });
   }
-  getLikeApi(_id) {
+
+  changeLikeCardStatus(_id, isLiked) {
     return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
-      method: "PUT",
+      method: !isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     }).then((res) => {
       return this._getResponseData(res);
     });
   }
-  deleteLikeApi(_id) {
-    return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then((res) => {
-      return this._getResponseData(res);
-    });
-  }
+
   updateAvatar(data) {
     return fetch(`${this._baseUrl}/users/me/avatar `, {
       method: "PATCH",

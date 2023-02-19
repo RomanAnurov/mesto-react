@@ -1,3 +1,4 @@
+
 function PopupWithForm(props) {
   return (
     <div
@@ -12,7 +13,7 @@ function PopupWithForm(props) {
           type="button"
         ></button>
         <h2 className="popup__title">{props.title}</h2>
-        <form className="popup__form" name={props.name} noValidate>
+        <form className="popup__form" onSubmit={props.onSubmit} name={props.name} noValidate>
           {props.children}
           <button className="popup__save" type="submit">
             {props.buttonText}
