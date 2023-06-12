@@ -22,4 +22,4 @@
 
 * Проект собран на Create React App
 
-* [Ссылка на проект в  gh-pages](https://romananurov.github.io/mesto/index.html)
+* [Ссылка на проект Mesto переписаный на React в gh-pages](https://romananurov.github.io/mesto-react/)
